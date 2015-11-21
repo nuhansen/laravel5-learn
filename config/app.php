@@ -145,6 +145,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Plugin
+         */
+
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Laralib\L5scaffold\GeneratorsServiceProvider::class,
+
     ],
 
     /*
