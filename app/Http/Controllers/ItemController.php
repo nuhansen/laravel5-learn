@@ -16,9 +16,12 @@ class ItemController extends Controller {
 	public function index()
 	{
 		$items = Item::orderBy('id', 'desc')->paginate(10);
-
 		return view('items.index', compact('items'));
 	}
+
+    public function search(){
+        return Item::all('id','name');
+    }
 
 	/**
 	 * Show the form for creating a new resource.

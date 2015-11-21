@@ -23,7 +23,9 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+Route::get('items/search', 'ItemController@search');
+
 Route::group(['middleware' => 'auth'], function() {
-    Route::resource("items", "ItemController");
-    Route::resource("item_logs", "ItemLogController");
+    Route::resource('items', 'ItemController');
+    Route::resource('item_logs', 'ItemLogController');
 });

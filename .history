@@ -8,4 +8,5 @@ composer require laralib/l5scaffold --dev
 #Laralib\L5scaffold\GeneratorsServiceProvider::class,
 #php artisan make:scaffold Item --schema="name:string, amount:integer, active:boolean"
 #php artisan make:scaffold ItemLog --schema="action:string, item_id:integer"
+php artisan make:test ItemTest
 
