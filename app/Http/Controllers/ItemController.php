@@ -3,19 +3,29 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Services\ItemService;
 use App\Item;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+    /* @var $itemService ItemService */
+    private $itemService;
+
+    function __construct(ItemService $itemService)
+    {
+        $this->itemService = $itemService;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return Response
+     */
+	public function index(Request $request)
 	{
-		$items = Item::orderBy('id', 'desc')->paginate(10);
+		$items = $this->itemService->find($request)->paginate(10);
 		return view('items.index', compact('items'));
 	}
 

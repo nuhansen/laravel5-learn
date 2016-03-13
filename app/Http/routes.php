@@ -25,7 +25,15 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('items/search', 'ItemController@search');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => ['auth','csrf']], function() {
     Route::resource('items', 'ItemController');
     Route::resource('item_logs', 'ItemLogController');
 });
+
+Route::group(
+    [
+        'prefix'     => 'v1',
+    ], function () {
+    Route::resource('items', "ItemV1Controller");
+}
+);

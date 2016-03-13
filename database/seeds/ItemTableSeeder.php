@@ -1,15 +1,14 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
 
 class ItemTableSeeder extends Seeder {
 
     public function run()
     {
-        // TestDummy::times(20)->create('App\Post');
+        $timeStampNow = Carbon::now()->toDateTimeString();
+        DB::table('items')->insert(['id'=>1, 'name'=>'item-1', 'amount'=>1, 'active'=>1, 'created_at'=>$timeStampNow, 'updated_at'=>$timeStampNow]);
     }
 
 }
